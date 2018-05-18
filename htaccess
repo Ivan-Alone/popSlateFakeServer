@@ -1,0 +1,10 @@
+RewriteEngine On
+
+RewriteBase / 
+
+RewriteCond %{HTTP_HOST} !=ios.io 
+RewriteCond %{HTTPS} =off 
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [QSA,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.+) router.php [L]
